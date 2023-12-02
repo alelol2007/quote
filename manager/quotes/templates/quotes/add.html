@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD</title>
+</head>
+<body>
+    <form action="{% url 'add' %}" method="POST">
+        {% csrf_token %}
+        <label for="person">author:</label>
+        <input type="text" name="person" id="person" placeholder="type the author">
+        <label for="Quote">Quote:</label>
+        <input type="text" name="Quote" id="Quote" placeholder="type the Quote">
+        <input type="submit" value="add">
+
+    </form>
+</body>
+</html>

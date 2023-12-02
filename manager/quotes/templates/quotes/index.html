@@ -6,6 +6,18 @@
     <title>quotes</title>
 </head>
 <body>
-    <h1>cat</h1>
+    <ul>
+        {%for info in info %}
+        <li> {{info.person}} </li>
+        <ul>
+            <li> {{info.quote}} </li>
+            <li>
+                <a href="/quotes/delete/{{info.id}}">delete</a>
+            </li>
+        </ul>
+        
+    </ul>
+    {% endfor %}
+    <a href="{% url 'add' %}">add a movie</a>
 </body>
 </html>
