@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quotes</title>
-</head>
-<body>
-    <ul>
-        {%for info in info %}
-        <li> {{info.person}} </li>
-        <ul>
-            <li> {{info.quote}} </li>
-            <li>
-                <a href="/quotes/delete/{{info.id}}">delete</a>
-            </li>
-        </ul>
+{% extends "quotes/boilerplate.html" %}
+
+
+{% block tittle %} Index {% endblock %}
+
+{% block body %}
+<section id="section2">
+    <div id="form-box">
+        <div class="form-value">
+            <div class="wrap">
+                <h1> QUOTES </h1>
+                {%for info in info %}
+                <ol style="text-align: left;">
+                    <li class="person"> {{info.person}} </li>
+                    <ul>
+                        <li class="wrap quote_class"> {{ info.quote|truncatechars:40|linebreaksbr }}</li>
+                        
+                        <li class="delete">
+                            <a href="/quotes/delete/{{info.id}}" class="delete as">-</a>
+                        </li>
+                    </ul>
+                </ol>
+
+                {% endfor %}
+            </div>
+            <br>
+            <br>
+            <a href="{% url 'add' %}" class="a">ADD A QUOTE</a>
+        </div>
+    </div>
         
-    </ul>
-    {% endfor %}
-    <a href="{% url 'add' %}">add a movie</a>
-</body>
-</html>
+        
+        {% endblock %}
+</section>
